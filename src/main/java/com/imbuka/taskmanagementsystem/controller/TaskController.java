@@ -37,7 +37,7 @@ public class TaskController {
             description = "Endpoint for creating Task"
     )
     @ApiResponse(
-            responseCode = "201",
+            responseCode = "1000",
             description = "HTTP Status Created"
     )
     @PostMapping("/createTask")
@@ -95,7 +95,18 @@ public class TaskController {
      * @return - a single based on Id
      */
 
-
+    @Operation(
+            summary = "Get Single Task By Id Rest API",
+            description = "Endpoint for getting single task by Id"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "Task by Id retrieved Successfully"
+    )
+    @ApiResponse(
+            responseCode = "500",
+            description = "Task by id not retrieved Successfully"
+    )
     @GetMapping("/getSingleTaskById/{id}")
     public ResponseDTO getSingleTaskById(@PathVariable long id) {
         Task task = iTaskService.getSingleTask(id);
@@ -121,6 +132,18 @@ public class TaskController {
      * @return - newly updated status based on id
      */
 
+    @Operation(
+            summary = "Updating Status of Task",
+            description = "Endpoint for updating status of task(PENDING, CANCELED, COMPLETED)"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "Task Status Updated Successfully"
+    )
+    @ApiResponse(
+            responseCode = "500",
+            description = "Task status not updated Successfully"
+    )
     @PutMapping("/{id}/status")
     public ResponseDTO updateTaskStatus(@PathVariable long id, @RequestParam TaskStatus newStatus) {
         Task updatedTask = iTaskService.updateTaskStatus(id, newStatus);
@@ -146,6 +169,18 @@ public class TaskController {
      * @return - tasks via status of tasks
      */
 
+    @Operation(
+            summary = "Get Tasks Via Status of Task",
+            description = "Endpoint for getting task via  status of task(PENDING, CANCELED, COMPLETED)"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "Task by status retrieved Successfully"
+    )
+    @ApiResponse(
+            responseCode = "500",
+            description = "Task with status not retrieved Successfully"
+    )
     @GetMapping("/getTaskStatus/{status}")
     public ResponseDTO getTasksByStatus(@PathVariable TaskStatus status) {
         List<Task> task = iTaskService.getTaskByStatus(status);
@@ -169,6 +204,18 @@ public class TaskController {
      * @return - deleted tasks
      */
 
+    @Operation(
+            summary = "Deleting all Tasks",
+            description = "Endpoint for deleting all Tasks"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "All tasks deleted successfully"
+    )
+    @ApiResponse(
+            responseCode = "500",
+            description = "Failed to delete Tasks"
+    )
     @DeleteMapping("/deleteAllTasks")
     public ResponseDTO deleteAllTasks() {
         ResponseDTO responseDTO = new ResponseDTO();
@@ -192,6 +239,18 @@ public class TaskController {
      * @return - deleted task
      */
 
+    @Operation(
+            summary = "Deleting Task by Id",
+            description = "Endpoint for deleting Task by Id"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "Task deleted successfully"
+    )
+    @ApiResponse(
+            responseCode = "500",
+            description = "Task not found or could not be deleted"
+    )
     @DeleteMapping("/deleteTaskById/{id}")
     public ResponseDTO deleteTaskById(@PathVariable Long id) {
         ResponseDTO responseDTO = new ResponseDTO();

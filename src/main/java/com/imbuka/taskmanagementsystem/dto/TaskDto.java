@@ -14,16 +14,22 @@ public class TaskDto {
     @NotEmpty(message = "Name cannot be empty or null")
     @Schema(
             description = "Task name",
-            example = "Alvin Imbuka"
+            example = "Creation of Task Management DashBoard"
     )
     private String name;
 
     @NotEmpty(message = "Description cannot be empty or null")
     @Schema(
-            description = "Creation of Task Management System",
+            description = "Task Description",
             example = "End point for creating CRUD Operations"
     )
     private String description;
 
+
+    @NotEmpty(message = "Task Status cannot be empty or null")
+    @Schema(
+            description = "Task Status",
+            example = "PENDING, COMPLETED, CANCELED"
+    )
     private TaskStatus status;
 }
