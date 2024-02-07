@@ -51,6 +51,8 @@ java -jar target/task-management-system.jar
 ```
 The application will start running on http://localhost:8080.
 
-##License
+## Author
+Alvin Imbuka
 
+## License
 [MIT](https://choosealicense.com/licenses/mit/)
